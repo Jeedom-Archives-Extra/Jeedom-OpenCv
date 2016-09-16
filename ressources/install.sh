@@ -25,14 +25,14 @@ sudo apt-get install -y --force-yes libv4l-0 libv4l-dev
 sudo apt-get install -y --force-yes python-numpy 
 sudo apt-get install -y --force-yes libpython2.6 python-dev python2.6-dev 
 sudo apt-get install -y --force-yes libgtk2.0-dev pkg-config
-echo 50 > /tmp/compilation_openCv_in_progress
+echo 40 > /tmp/compilation_openCv_in_progress
 
 mkdir /usr/local/src/openCv/
 mkdir /etc/openCv/
 cd /usr/local/src/openCv/
 
-#if [ "$(cat /etc/openCv/openCv_VERSION)" != "v2.1.0" ]
-#then
+if [ "$(cat /etc/openCv/openCv_VERSION)" != "v2.1.0" ]
+then
 	echo "*****************************************************************************************************"
 	echo "*                                            Compile openCv:                                      *"
 	echo "*****************************************************************************************************"
@@ -48,12 +48,26 @@ cd /usr/local/src/openCv/
 	echo 60 > /tmp/compilation_openCv_in_progress
 	# compile the library
 	make
-	echo 75 > /tmp/compilation_openCv_in_progress
+	echo 65 > /tmp/compilation_openCv_in_progress
 	# Install the binaries/libraries to your local system (prefix is /usr)
 	sudo make install
-	echo 85 > /tmp/compilation_openCv_in_progress
+	echo 70 > /tmp/compilation_openCv_in_progress
 	echo "v2.1.0" > /etc/openCv/openCv_VERSION
-#fi
+fi
+if [ "$(cat /etc/openCv/openCvPhp_VERSION)" != "v2.1.0" ]
+then
+	echo "*****************************************************************************************************"
+	echo "*                                            Compile openCv:                                      *"
+	echo "*****************************************************************************************************"
+	cd /usr/local/src/openCv/
+	if [ -d "/usr/local/src/openCv/opencvphp" ]; then
+		rm -R opencvphp
+	fi
+	git clone https://github.com/mgdm/OpenCV-for-PHP.git
+	cd opencvphp
+	 sudo phpize && ./configure && make && make install
+	echo "v2.1.0" > /etc/openCv/openCvPhp_VERSION
+fi
 sudo chmod 777 -R /etc/openCv
 echo 100 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
