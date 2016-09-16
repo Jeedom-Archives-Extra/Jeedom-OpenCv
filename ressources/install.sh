@@ -54,21 +54,21 @@ then
 	echo 70 > /tmp/compilation_openCv_in_progress
 	echo "v2.1.0" > /etc/openCv/openCv_VERSION
 fi
-if [ "$(cat /etc/openCv/openCvPhp_VERSION)" != "v2.1.0" ]
-then
-	echo "*****************************************************************************************************"
-	echo "*                                            Compile openCv:                                      *"
-	echo "*****************************************************************************************************"
-	cd /usr/local/src/openCv/
-	if [ -d "/usr/local/src/openCv/opencvphp" ]; then
-		rm -R opencvphp
-	fi
-	git clone https://github.com/mgdm/OpenCV-for-PHP.git
-	cd opencvphp
-	 sudo phpize && ./configure && make && make install
-	echo "v2.1.0" > /etc/openCv/openCvPhp_VERSION
-fi
-sudo chmod 777 -R /etc/openCv
+#if [ "$(cat /etc/openCv/openCvPhp_VERSION)" != "v2.1.0" ]
+#then
+#	echo "*****************************************************************************************************"
+#	echo "*                                            Compile openCv:                                      *"
+#	echo "*****************************************************************************************************"
+#	cd /usr/local/src/openCv/
+#	if [ -d "/usr/local/src/openCv/opencvphp" ]; then
+#		rm -R opencvphp
+#	fi
+#	git clone https://github.com/mgdm/OpenCV-for-PHP.git
+#	cd opencvphp
+#	 sudo phpize && ./configure && make && make install
+#	echo "v2.1.0" > /etc/openCv/openCvPhp_VERSION
+#fi
+#sudo chmod 777 -R /etc/openCv
 echo 100 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
 echo "*                                            Fin de l'installation                                      *"
