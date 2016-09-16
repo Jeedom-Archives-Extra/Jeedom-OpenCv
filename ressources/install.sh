@@ -7,28 +7,24 @@ echo "**************************************************************************
 sudo apt-get -y --force-yes update
 sudo apt-get -y --force-yes upgrade
 echo 10 > /tmp/compilation_openCv_in_progress
-sudo apt-get install -y --force-yes autoconf automake libtool
-sudo apt-get install -y --force-yes pkg-config
-sudo apt-get install -y --force-yes libpng12-dev
-sudo apt-get install -y --force-yes libjpeg62-dev
-sudo apt-get install -y --force-yes libtiff4-dev
-sudo apt-get install -y --force-yes zlib1g-dev
-sudo apt-get install -y --force-yes git
-sudo apt-get install -y --force-yes git-core
-sudo apt-get install -y --force-yes cmake
-sudo apt-get install -y --force-yes liblog4cplus-dev 
-sudo apt-get install -y --force-yes libcurl3-dev 
-sudo apt-get install -y --force-yes uuid-dev
 sudo apt-get install -y --force-yes build-essential
-sudo apt-get install -y --force-yes libjpeg8-dev libjasper-dev
-sudo apt-get install -y --force-yes libgtk2.0-dev
-sudo apt-get install -y --force-yes libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
-sudo apt-get install -y --force-yes libatlas-base-dev gfortran
-sudo apt-get install -y --force-yes python2.7-dev
-sudo apt-get install -y --force-yes libopencv-dev
-sudo apt-get install -y --force-yes libtesseract-dev
-sudo apt-get install -y --force-yes libleptonica-dev
-sudo apt-get install -y --force-yes beanstalkd
+sudo apt-get install -y --force-yes cmake 
+sudo apt-get install -y --force-yes pkg-config 
+sudo apt-get install -y --force-yes libpng12-0 libpng12-dev libpng++-dev libpng3 
+sudo apt-get install -y --force-yes libpnglite-dev libpngwriter0-dev libpngwriter0c2 
+sudo apt-get install -y --force-yes zlib1g-dbg zlib1g zlib1g-dev 
+sudo apt-get install -y --force-yes pngtools libtiff4-dev libtiff4 libtiffxx0c2 libtiff-tools 
+sudo apt-get install -y --force-yes libjpeg8 libjpeg8-dev libjpeg8-dbg libjpeg-progs 
+sudo apt-get install -y --force-yes ffmpeg libavcodec-dev libavcodec52 libavformat52 libavformat-dev 
+sudo apt-get install -y --force-yes libgstreamer0.10-0-dbg libgstreamer0.10-0  libgstreamer0.10-dev 
+sudo apt-get install -y --force-yes libxine1-ffmpeg  libxine-dev libxine1-bin 
+sudo apt-get install -y --force-yes libunicap2 libunicap2-dev 
+sudo apt-get install -y --force-yes libdc1394-22-dev libdc1394-22 libdc1394-utils 
+sudo apt-get install -y --force-yes swig 
+sudo apt-get install -y --force-yes libv4l-0 libv4l-dev 
+sudo apt-get install -y --force-yes python-numpy 
+sudo apt-get install -y --force-yes libpython2.6 python-dev python2.6-dev 
+sudo apt-get install -y --force-yes libgtk2.0-dev pkg-config
 echo 50 > /tmp/compilation_openCv_in_progress
 
 mkdir /usr/local/src/openCv/
@@ -44,11 +40,11 @@ cd /usr/local/src/openCv/
 	if [ -d "/usr/local/src/openCv/openCv" ]; then
 		rm -R openCv
 	fi
-	git clone https://github.com/openCv/openCv.git
-	cd openCv/src
+	git clone https://github.com/opencv/opencv.git
+	cd opencv
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc ..
+	cmake ../
 	echo 60 > /tmp/compilation_openCv_in_progress
 	# compile the library
 	make
