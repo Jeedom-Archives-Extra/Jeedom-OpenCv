@@ -1,5 +1,10 @@
 <?php
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+
+use OpenCV\Capture as Capture;
+use OpenCV\Image as Image;
+use OpenCV\Histogram as Histogram;
+
 class openCv extends eqLogic {
 	public static function deamonRunning() {
 		$result = exec("ps aux | grep opencv | grep -v grep | awk '{print $2}'");
@@ -8,6 +13,40 @@ class openCv extends eqLogic {
 		}
         return false;
     	}
+    	public static function CheckCamera(){
+    		$image=self::JpegCapture();
+    		self::edgeDetect(self::JpegCapture(););
+    		
+    	}
+	public static function JpegCapture(){
+		/* Test the face detectoin feature, using a capture from the camera */
+		$capture = Capture::createCameraCapture(0);
+		$image = $capture->queryFrame();
+		$result = $image->haarDetectObjects("/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml");
+		foreach ($result as $r) {
+			$image->rectangle($r['x'], $r['y'], $r['width'], $r['height']);
+		}
+		//$image = $image->convertColor(7);
+		//$image->save('/tmp/camera.jpg');
+		return $image;
+	}
+	public static function MovieCapture(){
+		$capture = OpenCV\Capture::createFileCapture('movie.avi');
+		$image = $capture->queryFrame();
+		$result = $image->haarDetectObjects("data/haarcascades/haarcascade_frontalface_default.xml");
+		foreach ($result as $r) {
+			$image->rectangle($r['x'], $r['y'], $r['width'], $r['height']);
+		}
+		$image->save('/tmp/video.jpg');
+	}
+	public static function edgeDetect($image){
+		$i = Image::load("test.jpg", Image::LOAD_IMAGE_COLOR);
+		$dst = $image->sobel(1, 0, 1);
+		$dst->save("test_sobel.jpg");
+		$dst2 = $image->canny(10, 50, 3);
+		//$dst2->save("test_canny.jpg");
+		return $dst2
+	}
 	public static function addEquipement($Name,$_logicalId) 	{
 		$Equipement = self::byLogicalId($_logicalId, 'openCv');
 		if (is_object($Equipement)) {
@@ -73,56 +112,48 @@ class openCv extends eqLogic {
 	public static function deamon_info() {
 		$return = array();
 		$return['log'] = 'openCv';	
-		$return['state'] = 'ok';
-		if(!self::deamonRunning())
+		$cron = cron::byClassAndFunction('openCv', 'CheckCamera');
+		if(is_object($cron) && $cron->getState()=="run")
+			$return['state'] = 'ok';
+		else 
 			$return['state'] = 'nok';
 		$return['launchable'] = 'ok';
 		return $return;
 	}
 	public static function deamon_start($_debug = false) {
+		log::remove('openCv');
+		self::deamon_stop();
 		$deamon_info = self::deamon_info();
 		if ($deamon_info['launchable'] != 'ok') 
 			return;
-		log::remove('openCv');
-		self::deamon_stop();
+		if ($deamon_info['state'] == 'ok') 
+			return;
+		$cron = cron::byClassAndFunction('openCv', 'CheckCamera');
+		if (!is_object($cron)) {
+			$cron = new cron();
+			$cron->setClass('openCv');
+			$cron->setFunction('CheckCamera');
+			$cron->setEnable(1);
+			$cron->setDeamon(1);
+			$cron->setSchedule('* * * * *');
+			$cron->setTimeout('999999');
+			$cron->save();
+		}
+		$cron->start();
+		$cron->run();
 	}
 	public static function deamon_stop() {
-		exec('sudo pkill opencv');
+		$cron = cron::byClassAndFunction('openCv', 'CheckCamera');
+		if (is_object($cron)) {
+			$cron->stop();
+			$cron->remove();
+		}
 	}
 }
 class openCvCmd extends cmd {
-	use OpenCV\Capture as Capture;
-	use OpenCV\Image as Image;
-	use OpenCV\Histogram as Histogram;
 	public function execute($_options = array()) {
 		switch($this->getLogicalId()){
-			case "JpegCapture":
-				/* Test the face detectoin feature, using a capture from the camera */
-				$capture = Capture::createCameraCapture(0);
-				$image = $capture->queryFrame();
-				$result = $image->haarDetectObjects("/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml");
-				foreach ($result as $r) {
-					$image->rectangle($r['x'], $r['y'], $r['width'], $r['height']);
-				}
-				//$image = $image->convertColor(7);
-				$image->save('/tmp/camera.jpg');
-			
-			break;
-			case "MovieCapture":
-				$capture = OpenCV\Capture::createFileCapture('movie.avi');
-				$image = $capture->queryFrame();
-				$result = $image->haarDetectObjects("data/haarcascades/haarcascade_frontalface_default.xml");
-				foreach ($result as $r) {
-					$image->rectangle($r['x'], $r['y'], $r['width'], $r['height']);
-				}
-				$image->save('/tmp/video.jpg');
-			break;
-			case "edgeDetect":
-				$i = Image::load("test.jpg", Image::LOAD_IMAGE_COLOR);
-				$dst = $i->sobel(1, 0, 1);
-				$dst->save("test_sobel.jpg");
-				$dst2 = $i->canny(10, 50, 3);
-				$dst2->save("test_canny.jpg");
+			default:
 			break;
 		}
 }
