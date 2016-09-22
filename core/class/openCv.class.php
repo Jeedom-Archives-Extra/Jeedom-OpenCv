@@ -43,7 +43,7 @@ class openCv extends eqLogic {
 		$dst->save("test_sobel.jpg");
 		$dst2 = $image->canny(10, 50, 3);
 		//$dst2->save("test_canny.jpg");
-		return $dst2
+		return $dst2;
 	}
 	public static function addEquipement($Name,$_logicalId) 	{
 		$Equipement = self::byLogicalId($_logicalId, 'openCv');
