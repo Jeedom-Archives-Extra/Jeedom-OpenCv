@@ -154,5 +154,6 @@ class openCvCmd extends cmd {
 			default:
 			break;
 		}
+	}
 }
 ?>
