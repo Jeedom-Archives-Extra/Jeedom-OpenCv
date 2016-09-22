@@ -1,18 +1,11 @@
 <?php
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
-use OpenCV\Capture as Capture;
-use OpenCV\Image as Image;
-use OpenCV\Histogram as Histogram;
+//use OpenCV\Capture as Capture;
+//use OpenCV\Image as Image;
+//use OpenCV\Histogram as Histogram;
 
 class openCv extends eqLogic {
-	public static function deamonRunning() {
-		$result = exec("ps aux | grep opencv | grep -v grep | awk '{print $2}'");
-		if($result != ""){
-			return $result;
-		}
-        return false;
-    	}
     	public static function CheckCamera(){
     		self::edgeDetect(self::JpegCapture());
     	}
