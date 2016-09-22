@@ -11,7 +11,7 @@ $eqLogics = eqLogic::byType('openCv');
         <div class="bs-sidebar">
             <ul id="ul_eqLogic" class="nav nav-list bs-sidenav">
                 <a class="btn btn-default btn-sm tooltips snapshot" title="Snapshot"><i class="fa fa-camera"></i> {{}}</a>
-                <a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter un groupe}}</a>
+                <a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une camera}}</a>
                 <li class="filter" style="margin-bottom: 5px;"><input class="filter form-control input-sm" placeholder="{{Rechercher}}" style="width: 100%"/></li>
                 <?php
                 foreach ($eqLogics as $eqLogic) {
@@ -47,14 +47,14 @@ $eqLogics = eqLogic::byType('openCv');
 				<center>
 					<i class="fa fa-file-o" style="font-size : 5em;color:#767676;"></i>
 				</center>
-				<span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Log ALPRD}}</center></span>
+				<span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Log OpenCV}}</center></span>
 			</div>
 		</div>
-        <legend>{{Mes groupes de plaques d'immatriculation}}</legend>
+        <legend>{{Mes camera OpenCV}}</legend>
 		<div class="eqLogicThumbnailContainer">
 			<?php
 			if (count($eqLogics) == 0) {
-				echo "<br/><br/><br/><center><span style='color:#767676;font-size:1.2em;font-weight: bold;'>{{Vous n'avez pas encore de groupe de plaque d'immatriculation, cliquez sur Ajouter un groupe pour commencer}}</span></center>";
+				echo "<br/><br/><br/><center><span style='color:#767676;font-size:1.2em;font-weight: bold;'>{{Vous n'avez pas encore de camera configurer, cliquez sur Ajouter un groupe pour commencer}}</span></center>";
 			} else {
 			?>
 				<?php
@@ -118,13 +118,12 @@ $eqLogics = eqLogic::byType('openCv');
 				</div>
 			</fieldset> 
         </form>
-        <legend>{{Liste des plaques appartenant a ce groupe}}</legend>
-        <a class="btn btn-success btn-sm cmdAction" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter un plaque d'immatriculation}}</a><br/><br/-->
+        <legend>{{Commandes}}</legend>
         <table id="table_cmd" class="table table-bordered table-condensed">
             <thead>
                 <tr>
                     <th>{{Nom}}</th>
-					<th>{{Numero de la plaque}}</th>
+					<th>{{Nom}}</th>
 					<th>{{Action}}</th>
                     <th>{{}}</th>
                 </tr>
