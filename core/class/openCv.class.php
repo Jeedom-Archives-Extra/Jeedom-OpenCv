@@ -82,11 +82,11 @@ class openCv extends eqLogic {
 		$br = (php_sapi_name() == "cli")? "":"<br>";
 	/*	if(!extension_loaded('opencv')) {
 			dl('opencv.' . PHP_SHLIB_SUFFIX);
-		}*/
+		}
 		$function = 'confirm_' . $module . '_compiled';
 		if (extension_loaded($module)) 
 			$return['state'] = 'ok';
-		 else 
+		 else */
 			$return['state'] = 'nok';
 		
 		return $return;
