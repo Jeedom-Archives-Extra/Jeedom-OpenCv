@@ -80,9 +80,9 @@ class openCv extends eqLogic {
 		$return['log'] = 'openCv_update';
 		$return['progress_file'] = '/tmp/compilation_openCv_in_progress';
 		$br = (php_sapi_name() == "cli")? "":"<br>";
-		if(!extension_loaded('opencv')) {
+	/*	if(!extension_loaded('opencv')) {
 			dl('opencv.' . PHP_SHLIB_SUFFIX);
-		}
+		}*/
 		$function = 'confirm_' . $module . '_compiled';
 		if (extension_loaded($module)) 
 			$return['state'] = 'ok';
