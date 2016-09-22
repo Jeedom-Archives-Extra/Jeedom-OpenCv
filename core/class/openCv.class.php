@@ -14,9 +14,7 @@ class openCv extends eqLogic {
         return false;
     	}
     	public static function CheckCamera(){
-    		$image=self::JpegCapture();
-    		self::edgeDetect(self::JpegCapture(););
-    		
+    		self::edgeDetect(self::JpegCapture());
     	}
 	public static function JpegCapture(){
 		/* Test the face detectoin feature, using a capture from the camera */
