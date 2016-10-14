@@ -44,7 +44,7 @@ if (!isConnect()) {
 			<div class="form-group">
 				<label class="col-lg-4 control-label">{{Activer le Snapshot}}</label>
 				<div class="col-lg-4">
-					<input type="checkbox" class="configKey bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="snapshot"/>
+					<input type="checkbox" class="configKey" data-label-text="{{Activer}}" data-l1key="snapshot"/>
 				 </div>
 			</div> 
 		</fieldset>
