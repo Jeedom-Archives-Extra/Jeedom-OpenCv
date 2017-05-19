@@ -1,0 +1,11 @@
+{
+	"id" : "openCv",
+	"name" : "OpenCV - Reconnaissance des visages",
+	"description" : "Plugin permanent de faire de la reconnaissance de visage avec nos camera",
+	"licence" : "AGPL",
+	"author" : "Halbout Michael",
+	"require" : "3.0",
+	"category" : "securityl",
+	"hasOwnDeamon" : true,
+	"hasDependency" : true
+}
