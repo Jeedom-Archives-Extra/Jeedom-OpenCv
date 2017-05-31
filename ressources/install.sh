@@ -20,9 +20,7 @@ echo "**************************************************************************
 cd /usr/local/src/openCv/
 git clone https://github.com/opencv/opencv.git
 cd opencv
-mkdir release
-cd release
-cmake
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local/src/openCv/
 make
 sudo make install
 echo "*****************************************************************************************************"
