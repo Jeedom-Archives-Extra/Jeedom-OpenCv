@@ -22,7 +22,7 @@ git clone https://github.com/opencv/opencv.git
 cd opencv
 mkdir release
 cd release
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local/src/openCv/
+cmake
 make
 sudo make install
 echo "*****************************************************************************************************"
