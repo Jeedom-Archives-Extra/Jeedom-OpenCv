@@ -12,6 +12,7 @@ sudo apt-get install -y --force-yes pkg-config
 sudo apt-get install -y --force-yes git
 sudo apt-get install -y --force-yes git-core
 sudo apt-get install -y --force-yes cmake
+sudo apt-get install -y --force-yes libopencv_video
 sudo apt-get install -y --force-yes libcv-dev
 sudo apt-get install -y --force-yes libcv2.4
 sudo apt-get install -y --force-yes libcvaux-dev
