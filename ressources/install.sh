@@ -27,7 +27,7 @@ echo "**************************************************************************
 echo "*                                        Compile OpenCV-for-PHP:                                    *"
 echo "*****************************************************************************************************"
 cd /usr/local/src/openCv/
-git clone https://github.com/ProGM/OpenCV-for-PHP.git
+git clone https://github.com/mgdm/OpenCV-for-PHP.git
 cd OpenCV-for-PHP
 phpize
 ./configure && make
