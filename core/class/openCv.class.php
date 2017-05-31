@@ -7,11 +7,16 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 class openCv extends eqLogic {
     	public static function CheckCamera(){
-    		self::edgeDetect(self::JpegCapture());
+		/*if(config::byKey('configuration','openCv')!=''){
+			foreach(config::byKey('configuration','openCv') as $Camera){
+				if($Camera['cameraUrl']!='')
+    					self::edgeDetect(self::JpegCapture($Camera['cameraUrl']));
+			}
+		}*/
     	}
-	public static function JpegCapture(){
+	public static function JpegCapture($Camera){
 		/* Test the face detectoin feature, using a capture from the camera */
-		$capture = Capture::createCameraCapture(0);
+		$capture = Capture::createCameraCapture($Camera);
 		$image = $capture->queryFrame();
 		$result = $image->haarDetectObjects("/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml");
 		foreach ($result as $r) {
