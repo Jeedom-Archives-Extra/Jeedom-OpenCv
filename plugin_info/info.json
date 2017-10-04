@@ -1,6 +1,6 @@
 {
 	"id" : "openCv",
-	"name" : ">OpenCV - Reconnaissance des visages",
+	"name" : "OpenCV - Reconnaissance des visages",
 	"licence" : "AGPL",
 	"author" : "Halbout Michael",
 	"require" : "3.0",
