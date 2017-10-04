@@ -113,7 +113,20 @@ class openCv extends eqLogic {
 			$return['state'] = 'ok';
 		else 
 			$return['state'] = 'nok';
-		$return['launchable'] = 'ok';
+		$return['launchable'] = 'nok';
+      		$Cameras=config::byKey('configuration','openCv');
+		if($Cameras!=''){
+			if(is_array($Cameras['cameraUrl'])){
+				foreach($Cameras['cameraUrl'] as $AlprCamera)
+				{
+					if($AlprCamera!='')
+						$return['launchable'] = 'ok';
+				}
+			}else{
+				if($Cameras['cameraUrl']!='')
+					$return['launchable'] = 'ok';
+			}
+		}
 		return $return;
 	}
 	public static function deamon_start($_debug = false) {
