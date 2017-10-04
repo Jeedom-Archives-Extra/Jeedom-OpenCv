@@ -17,12 +17,7 @@ sudo mkdir /usr/local/src/openCv/
 echo "*****************************************************************************************************"
 echo "*                                            Compile OpenCV:                                        *"
 echo "*****************************************************************************************************"
-cd /usr/local/src/openCv/
-git clone https://github.com/opencv/opencv.git
-cd opencv
-./configure
-make
-sudo make install
+sudo apt-get install libopencv-dev python-opencv
 echo "*****************************************************************************************************"
 echo "*                                        Compile OpenCV-for-PHP:                                    *"
 echo "*****************************************************************************************************"
