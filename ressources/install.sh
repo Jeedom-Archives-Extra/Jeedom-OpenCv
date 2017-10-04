@@ -21,16 +21,22 @@ echo "**************************************************************************
 echo "*                                        Compile OpenCV-for-PHP:                                    *"
 echo "*****************************************************************************************************"
 cd /usr/local/src/openCv/
-git clone https://github.com/mgdm/OpenCV-for-PHP.git
-cd OpenCV-for-PHP
-sudo phpize
-./configure 
-echo 60 > /tmp/compilation_openCv_in_progress
+#git clone https://github.com/mgdm/OpenCV-for-PHP.git
+#cd OpenCV-for-PHP
+#sudo phpize
+#./configure 
+#echo 60 > /tmp/compilation_openCv_in_progress
+#make
+#echo 70 > /tmp/compilation_openCv_in_progress
+#make test
+#echo 80 > /tmp/compilation_openCv_in_progress
+#sudo chmod -R 777 /usr/local/src/openCv/
+#sudo make install
+git clone https://github.com/hihozhou/php-opencv.git
+cd php-opencv
+phpize
+./configure --with-php-config=your php-config path
 make
-echo 70 > /tmp/compilation_openCv_in_progress
-make test
-echo 80 > /tmp/compilation_openCv_in_progress
-sudo chmod -R 777 /usr/local/src/openCv/
 sudo make install
 echo 100 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
