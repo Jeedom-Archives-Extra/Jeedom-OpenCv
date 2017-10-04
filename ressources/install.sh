@@ -25,9 +25,10 @@ echo "**************************************************************************
 cd /usr/local/src/openCv/
 git clone https://github.com/mgdm/OpenCV-for-PHP.git
 cd OpenCV-for-PHP
-phpize
-./configure && make
-make test
+sudo phpize
+sudo ./configure 
+sudo make
+sudo make test
 sudo make install
 echo 100 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
