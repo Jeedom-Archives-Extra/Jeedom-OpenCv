@@ -14,7 +14,7 @@ echo 20 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
 echo "*                                            Compile OpenCV:                                        *"
 echo "*****************************************************************************************************"
-sudo apt-get install -y --allow  libopencv-dev python-opencv
+sudo apt-get install -y libopencv-dev python-opencv
 echo 50 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
 echo "*                                        Compile OpenCV-for-PHP:                                    *"
