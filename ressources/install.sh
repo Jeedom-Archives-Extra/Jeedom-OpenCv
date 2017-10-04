@@ -24,10 +24,11 @@ cd /usr/local/src/openCv/
 git clone https://github.com/mgdm/OpenCV-for-PHP.git
 cd OpenCV-for-PHP
 sudo phpize
-sudo ./configure 
+./configure 
 echo 60 > /tmp/compilation_openCv_in_progress
-sudo make
+make
 echo 70 > /tmp/compilation_openCv_in_progress
+make test
 echo 80 > /tmp/compilation_openCv_in_progress
 sudo chmod -R 777 /usr/local/src/openCv/
 sudo make install
