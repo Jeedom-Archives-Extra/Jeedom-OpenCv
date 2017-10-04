@@ -29,6 +29,7 @@ sudo make
 echo 70 > /tmp/compilation_openCv_in_progress
 sudo make test
 echo 80 > /tmp/compilation_openCv_in_progress
+sudo chmod -R 777 /usr/local/src/openCv/
 sudo make install
 echo 100 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
