@@ -4,17 +4,18 @@ echo 0 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
 echo "*                                Installing additional libraries                                    *"
 echo "*****************************************************************************************************"
-sudo apt-get -y --force-yes update
-sudo apt-get -y --force-yes upgrade
+sudo apt-get -qy update
+sudo apt-get -qy upgrade
 echo 10 > /tmp/compilation_openCv_in_progress
 sudo rm -R /usr/local/src/openCv/
 sudo mkdir /usr/local/src/openCv/
 sudo chmod -R 777 /usr/local/src/openCv/
+sudo apt-get -qy install libtool
 echo 20 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
 echo "*                                            Compile OpenCV:                                        *"
 echo "*****************************************************************************************************"
-sudo apt-get install -y libopencv-dev python-opencv
+sudo apt-get install -qy libopencv-dev python-opencv
 echo 50 > /tmp/compilation_openCv_in_progress
 echo "*****************************************************************************************************"
 echo "*                                        Compile OpenCV-for-PHP:                                    *"
