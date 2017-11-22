@@ -5,6 +5,9 @@
 	"author" : "Halbout Michael",
 	"require" : "3.0",
 	"category" : "security",
-	"hasOwnDeamon" : true,
+	"hasOwnDeamon" : true,,
+	"issue" : "https://github.com/mika-nt28/Jeedom-OpenCv/issues",
+ 	"changelog" : "https://github.com/mika-nt28/Jeedom-OpenCv/commits/master",
+ 	"documentation" : "https://jeedom.github.io/documentation/third_plugin/openCv/fr_FR/index.html"
 	"hasDependency" : true
 }
